@@ -1,4 +1,4 @@
-# How to turn a sequence of still images (OpenEXR) into a movie, using Python and ffmpeg.
+# How to turn a sequence of still images (OpenEXR) into a movie using Python and FFmpeg.
 
 # Self Description
 I am Masataka @plinecom, a pipeline engineer at digitalbigmo Inc.
@@ -31,7 +31,7 @@ if __name__ == '__main__':
 ```terminal:terminal
 pip install ffmpeg-python
 ```
-Download it from PyPI using pip. This module does not include ffmpeg itself, so you need to install it using a package management system such as brew, or download ffmpeg and ffprobe, which are pre-built for each platform, from the official ffmpeg website and put them in a directory where the path goes. Dockerfile should also be prepared.
+Download it from PyPI using pip. This module does not include ffmpeg itself, so you need to install it using a package management system such as brew or download ffmpeg and ffprobe, which are pre-built for each platform, from the official ffmpeg website and put them in a directory where the path goes. 
 I also prepared a Dockerfile.
 ```Dockerfile:Dockerfile
 FROM rockylinux:8
@@ -62,7 +62,7 @@ The wildcard is in the path name to tell it to glob and that the frame rate is 2
                              ).output('/foo/bar/' + fname + '.mov',
                                       pix_fmt='yuv420p'
 ```
-Specify the destination and file name. As a bonus, pix_fmt is indicated. If pix_fmt is not set to 'yuv420p', a file which cannot be previewed on mac will be created. It is inconvenient for a simple check use, so I'll put up with it and set it to 4:2:0. By the way, I am not instructing you to export at the very small size of 420p, I am instructing you how to express the colors.
+Specify the destination and file name. As a bonus, pix_fmt is indicated. If pix_fmt is not set to 'yuv420p', you will create a file you cannot preview on mac. It is inconvenient for a simple check use, so I'll put up with it and set it to 4:2:0. By the way, I am not instructing you to export at the minimal size of 420p, and I am instructing you on how to express the colors.
 
 https://qiita.com/mriho/items/a16b3c618c378efeb58f
 
@@ -70,7 +70,7 @@ https://qiita.com/mriho/items/a16b3c618c378efeb58f
 ```python:
                                       ).run(overwrite_output=True)
 ```
-If there is already a video file with the same name, we have a problem with it stopping, so we instruct it to force overwrite. If there is nothing special like that, just run() is fine.
+If there is a video file with the same name, we have a problem with it stopping, so we instruct it to force overwrite. If there is nothing special like that, just run() is acceptable.
 
 # advertisement
 digitalbigmo Inc. sells beautiful skin plug-ins and provides video VFX production services. If you are interested, please visit our web page. Let's work together.
